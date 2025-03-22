@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise pour toi &#10084;&#65039;</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto&display=swap">
+    <style>
+        /* Styles généraux */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            color: black; /* Texte en noir */
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .italic-text {
+            font-style: italic;
+        }
+
+        /* Premier message */
+        #first-message {
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        #first-message h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            margin: 0;
+        }
+
+        /* Deuxième message */
+        #second-message {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            animation: slideIn 1s ease-in-out;
+        }
+
+        #second-message h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        #second-message input {
+            padding: 10px;
+            font-size: 1rem;
+            border: 2px solid black;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        #second-message button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        #second-message button:hover {
+            background-color: #333;
+        }
+
+        /* Message d'erreur */
+        #error-message {
+            margin-top: 10px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        #error-message img {
+            width: 50px;
+            height: 50px;
+        }
+
+        /* Troisième message */
+        #third-message {
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        #third-message h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            margin: 0;
+        }
+
+        #third-message .message {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        /* Cœurs flottants */
+        .floating-hearts {
+            position: absolute;
+            bottom: -100px;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .floating-hearts span {
+            position: absolute;
+            font-size: 30px;
+            color: #ff6b6b;
+            animation: floatUp 5s linear infinite;
+        }
+
+        /* Positionnement aléatoire des cœurs */
+        .floating-hearts span:nth-child(1) {
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-hearts span:nth-child(2) {
+            left: 20%;
+            animation-delay: 1s;
+        }
+
+        .floating-hearts span:nth-child(3) {
+            left: 30%;
+            animation-delay: 2s;
+        }
+
+        .floating-hearts span:nth-child(4) {
+            left: 40%;
+            animation-delay: 3s;
+        }
+
+        .floating-hearts span:nth-child(5) {
+            left: 50%;
+            animation-delay: 4s;
+        }
+
+        .floating-hearts span:nth-child(6) {
+            left: 60%;
+            animation-delay: 5s;
+        }
+
+        .floating-hearts span:nth-child(7) {
+            left: 70%;
+            animation-delay: 6s;
+        }
+
+        .floating-hearts span:nth-child(8) {
+            left: 80%;
+            animation-delay: 7s;
+        }
+
+        .floating-hearts span:nth-child(9) {
+            left: 90%;
+            animation-delay: 8s;
+        }
+
+        .floating-hearts span:nth-child(10) {
+            left: 100%;
+            animation-delay: 9s;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-100px); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Premier message -->
+    <div id="first-message" onclick="showSecondMessage()">
+        <h1 class="italic-text">Je t'avoue que je t'aime</h1>
+    </div>
+
+    <!-- Deuxième message (caché au début) -->
+    <div id="second-message" class="hidden">
+        <div class="game">
+            <h2 class="italic-text">Complète le texte pour résoudre le code :</h2>
+            <p class="italic-text">Le mot que tu utilises souvent et qui me plaît beaucoup est :</p>
+            <input type="text" id="code-input" placeholder="Entrez le code ici">
+            <div id="error-message">
+                <img src="https://image.spreadshirtmedia.net/image-server/v1/products/T1459A839PA4459PT28D180913231W6972H5702/views/1,width=378,height=378,appearanceId=839,backgroundColor=F2F2F2/chat-meme.jpg" alt="Crying Face"> <!-- Remplacez "votre-image.png" par votre image -->
+                <p>Upset, Tu n'as pas ciblé le bon mot🥲🥲🥲. Cherche un mot qui commence par B et se termine par E.</p>
+            </div>
+            <button onclick="checkCode()">Valider</button>
+        </div>
+    </div>
+
+    <!-- Troisième message (caché au début) -->
+    <div id="third-message" class="hidden">
+        <h1 class="italic-text">Mohcine Kaddi</h1>
+        <p class="message italic-text">Merci au Créateur de me ramener un amour, un homme que je vois à travers ses yeux, la raison d'être💕.</p>
+        <p class="message italic-text" id="birthdate">Date de naissance : <span id="birthdate-value">23/03/2002</span></p>
+<p class="message italic-text">notre premier amour ❤️😊 c'est le 15/06/2024.</p>
+    </div>
+
+    <!-- Cœurs flottants -->
+    <div class="floating-hearts">
+        <span>&#10084;</span>
+        <span>&#10084;</span>
+        <span>&#10084;</span>
+        <span>&#10084;</span>
+        <span>&#10084;</span>
+        <span>&#10084;</span>
+        <span>&#10084;</span>
+        <span>&#10084;</span>
+        <span>&#10084;</span>
+        <span>&#10084;</span>
+    </div>
+
+    <script>
+        // Fonction pour vérifier le code
+        function checkCode() {
+            const codeInput = document.getElementById('code-input').value.toLowerCase();
+            const errorMessage = document.getElementById('error-message');
+            const secondMessage = document.getElementById('second-message');
+            const thirdMessage = document.getElementById('third-message');
+
+            // Vérifier si le mot commence par "b" et se termine par "e"
+            if (codeInput.startsWith('b') && codeInput.endsWith('e')) {
+                secondMessage.classList.add('hidden');
+                thirdMessage.classList.remove('hidden');
+            } else {
+                errorMessage.style.display = 'flex';
+            }
+        }
+
+        // Fonction pour faire disparaître le premier message et afficher le deuxième
+        function showSecondMessage() {
+            const firstMessage = document.getElementById('first-message');
+            const secondMessage = document.getElementById('second-message');
+            firstMessage.classList.add('hidden');
+            secondMessage.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
